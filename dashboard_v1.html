@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="{% static 'assets/jquery.js' %}"></script>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: dashboardfont;
+        }
+
+        @font-face {
+            font-family: 'dashboardfont';
+            src: url("{% static 'assets/dashboard.ttf' %}") format('truetype');
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: dashboardfont;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("{% static 'assets/dashboardn.jpg' %}");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        div.absolute {
+            position: absolute;
+            width: 470px;
+            height: 50px;
+        }
+
+        div.absolute1 {
+            position: absolute;
+            width: 106px;
+            height: 53px;
+        }
+
+
+        .time {
+            background: #FFF0;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+            width: 450px;
+        }
+
+        .hms {
+            font-size: 40pt;
+            font-weight: 200;
+        }
+
+        .ampm {
+            font-size: 14pt;
+        }
+
+        .date {
+            font-size: 14pt;
+        }
+
+        .alertxx {
+            background-image: url("{% static 'assets/BoxANPR.png' %}");
+            opacity: 0.75;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+            width: 280px;
+            height: 80px;
+        }
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body style="margin: 0;">
+    <img src="{% static 'assets/dashboardn.jpg' %}" alt="No Dashboard" width="1920" height="1080">
+
+    <div class="time" style="position:absolute;top: 50px;left:727px;">
+        <span style="font-size: 16pt;">Live ADNOC Station Monitoring</span></br>
+        <span class="hms"></span>
+        <span class="ampm"></span>
+        <br>
+        <span class="date"></span>
+    </div>
+
+    <div id="total1" class="absolute1" style="top: 500px;left: 140px;">
+        <div class="card" style="width: 15rem;background-color: rgba(194, 154, 45, 0.667);">
+            <img class="card-img-top" style="height: 10rem;" src="https://raw.githubusercontent.com/kanseatuldxb/Temp/main/veh.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Wasing Queue - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="total1" class="absolute1" style="top: 320px;left: 540px;">
+        <div class="card" style="width: 15rem;background-color: rgba(23, 187, 37, 0.666);">
+            <img class="card-img-top" src="https://raw.githubusercontent.com/kanseatuldxb/Temp/main/veh.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Auto Wash - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+    <div id="total2" class="absolute1" style="top: 740px;left: 540px;">
+        <div class="card" style="width: 15rem;background-color: rgba(23, 187, 37, 0.666);">
+            <img class="card-img-top" src="https://previews.123rf.com/images/barks/barks1811/barks181100045/111452590-car-automobile-icon-public-information-symbol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Manual Wash - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="total1" class="absolute1" style="top: 340px;left: 840px;">
+        <div class="card" style="width: 15rem;background-color: #FFFA;">
+            <img class="card-img-top" src="https://previews.123rf.com/images/barks/barks1811/barks181100045/111452590-car-automobile-icon-public-information-symbol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Vacuum 1 - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+    <div id="total2" class="absolute1" style="top: 710px;left: 840px;">
+        <div class="card" style="width: 15rem;background-color: #FFFA;">
+            <img class="card-img-top" src="https://previews.123rf.com/images/barks/barks1811/barks181100045/111452590-car-automobile-icon-public-information-symbol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Vacuum 2 - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="total1" class="absolute1" style="top: 340px;left: 1140px;">
+        <div class="card" style="width: 15rem;background-color: rgba(78, 103, 216, 0.666);">
+            <img class="card-img-top" src="https://previews.123rf.com/images/barks/barks1811/barks181100045/111452590-car-automobile-icon-public-information-symbol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Lube Bay 1 - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 710px;left: 1140px;">
+        <div class="card" style="width: 15rem;background-color: rgba(78, 103, 216, 0.666);">
+            <img class="card-img-top" src="https://previews.123rf.com/images/barks/barks1811/barks181100045/111452590-car-automobile-icon-public-information-symbol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Lube Bay 2 - 245</h5>
+                <p class="card-text">Last Entry - J12345<br>Time - 15:45:45</p>
+                <a href="#" class="btn btn-primary">See Vehicles</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 50px;left: 1500px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(23, 187, 165, 0.603);">
+            <div class="card-body">
+                <h2 class="card-title">Car Wash Count</h2>
+                <h4 class="card-title">256 Cars</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 250px;left: 1500px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(23, 187, 165, 0.603);">
+            <div class="card-body">
+                <h2 class="card-title">Avg. Journey Time</h2>
+                <h4 class="card-title">256 Mins</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 450px;left: 1500px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(194, 154, 45, 0.667);">
+            <div class="card-body">
+                <h2 class="card-title">Avg. Wait Time</h2>
+                <h4 class="card-title">256 Mins</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 650px;left: 1500px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(23, 187, 37, 0.666);">
+            <div class="card-body">
+                <h2 class="card-title">Avg. Wash Time</h2>
+                <h4 class="card-title">256 Mins</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 850px;left: 1500px;">
+        <div class="card text-center" style="width: 22rem;background-color: #FFFA;">
+            <div class="card-body">
+                <h2 class="card-title">Avg. Vacuum Time</h2>
+                <h4 class="card-title">256 Mins</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 50px;left: 50px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(78, 103, 216, 0.666);">
+            <div class="card-body">
+                <h2 class="card-title">Lube Bay Count</h2>
+                <h4 class="card-title">256 Cars</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="total2" class="absolute1" style="top: 250px;left: 50px;">
+        <div class="card text-center" style="width: 22rem;background-color: rgba(78, 103, 216, 0.666);">
+            <div class="card-body">
+                <h2 class="card-title">Avg. Journey Time</h2>
+                <h4 class="card-title">256 Mins</h4>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script>
+        function updateTime() {
+            var dateInfo = new Date();
+
+            /* time */
+            var hr,
+                _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+                sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+                ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+
+            // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+            if (dateInfo.getHours() == 0) {
+                hr = 12;
+            } else if (dateInfo.getHours() > 12) {
+                hr = dateInfo.getHours() - 12;
+            } else {
+                hr = dateInfo.getHours();
+            }
+
+            var currentTime = hr + ":" + _min + ":" + sec;
+
+            // print time
+            document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+            document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+
+            /* date */
+            var dow = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                month = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                day = dateInfo.getDate();
+
+            // store date
+            var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+
+            document.getElementsByClassName("date")[0].innerHTML = currentDate;
+        };
+
+        function updateAlert() {
+            var xxx = document.getElementById("alertxxx");
+            xxx.style.display = (xxx.style.display == "block") ? "none" : "block";
+        }
+
+        function updateCount() {
+            $.get("https://52.90.249.216/api/visapi/", function (data, status) {
+                console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+                if (status == "success") {
+                    document.getElementById("total1").innerHTML = data.CountDetails.QueueCount;
+                    document.getElementById("total2").innerHTML = data.CountDetails.AutoCount; //
+                    document.getElementById("total3").innerHTML = data.CountDetails.ManCount;
+                    document.getElementById("total4").innerHTML = data.CountDetails.QueueCount; //Vacuum1Count;
+                    document.getElementById("total5").innerHTML = data.CountDetails.Vacuum1Count;
+                    document.getElementById("total6").innerHTML = data.CountDetails.Vacuum2Count;
+                    document.getElementById("total7").innerHTML = data.CountDetails.Lube2Count;
+                    document.getElementById("total8").innerHTML = data.CountDetails.Lube1Count;
+
+                    document.getElementById("total9").innerHTML = data.LastDetails.QueueLast.PlatesNo;
+                    document.getElementById("total10").innerHTML = data.LastDetails.AutoLast.PlatesNo; //
+                    document.getElementById("total11").innerHTML = data.LastDetails.ManLast.PlatesNo;
+                    document.getElementById("total12").innerHTML = data.LastDetails.QueueLast
+                        .PlatesNo; //Vacuum1Last.PlatesNo;
+                    document.getElementById("total13").innerHTML = data.LastDetails.Vacuum1Last.PlatesNo;
+                    document.getElementById("total14").innerHTML = data.LastDetails.Vacuum2Last.PlatesNo;
+                    document.getElementById("total15").innerHTML = data.LastDetails.Lube2Last.PlatesNo;
+                    document.getElementById("total16").innerHTML = data.LastDetails.Lube1Last.PlatesNo;
+
+                    document.getElementById("ov1").innerHTML = data.CountDetails.Vacuum1Count + data
+                        .CountDetails.Vacuum2Count;
+                    document.getElementById("ov2").innerHTML = "- Mins";
+                    document.getElementById("ov3").innerHTML = "- Mins";
+                    document.getElementById("ov4").innerHTML = "- Mins";
+                    document.getElementById("ov5").innerHTML = "- Mins";
+                    document.getElementById("ov6").innerHTML = data.CountDetails.Lube1Count + data.CountDetails
+                        .Lube2Count;
+                    document.getElementById("ov7").innerHTML = data.CountDetails.Lube1Count;
+                }
+            });
+        }
+
+        //updateCount();
+        setInterval(function () {
+            //updateCount()
+        }, 5000);
+
+        updateTime();
+        setInterval(function () {
+            updateTime()
+        }, 1000);
+
+        //updateCount()
+        //setInterval(function () {
+        //    updateCount()
+        //}, 2000);
+
+        //    updateAlert()
+        //    setInterval(function () {
+        //      updateAlert()
+        //    }, 30000);
+    </script>
+</body>
+
+</html>
