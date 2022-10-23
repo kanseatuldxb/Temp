@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!-- saved from url=(0033)https://52.90.249.216/dashboard1/ -->
 <html lang="en">
@@ -5,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}">
     <style>
         body,
         html {
@@ -18,7 +19,7 @@
 
         @font-face {
             font-family: 'dashboardfont';
-            src: url("/Roboto-Regular.ttf") format('truetype');
+            src: url("{% static 'assets/Roboto-Regular.ttf' %}") format('truetype');
         }
 
         .time,
@@ -144,7 +145,7 @@
     <div class="container my-5">
         <div class="row d-flex align-items-center mb-5">
             <div class="col-sm-12 col-md-4 text-sm-center time d-flex justify-content-around">
-                <img src="logo-en.svg" alt="" class="img-fluid">
+                <img src="{% static 'assets/logo-en.svg' %}" alt="" class="img-fluid">
                 <div>
                     <span style="font-size: 16pt;">Live Station Monitoring</span><br>
                     <span class="hms">11:13:16</span>
@@ -404,7 +405,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="./bootstrap.js"></script>
+    <script src="{% static 'assets/bootstrap.js' %}"></script>
     <script>
         Date.prototype.addDays = function (days) {
             var date = new Date(this.valueOf());
@@ -477,7 +478,7 @@
                             if (data.LastDetails.AutoLast.VehicleImage != null) {
                                 $("#autoWashImg")[0].src = "https://52.90.249.216" + data.LastDetails.AutoLast.VehicleImage;
                             } else {
-                                $("#autoWashImg")[0].src = "dummyCar.png"
+                                $("#autoWashImg")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             autoWashID = data.LastDetails.AutoLast.id
                             $("#autoWashCount").html("Cars Count: " + data.CountDetails.AutoCount);
@@ -496,7 +497,7 @@
                             if (data.LastDetails.ManLast.VehicleImage != null) {
                                 $("#manWashImg")[0].src = "https://52.90.249.216" + data.LastDetails.ManLast.VehicleImage;
                             } else {
-                                $("#manWashImg")[0].src = "dummyCar.png"
+                                $("#manWashImg")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             manWash = data.LastDetails.ManLast.id
                             $("#manWashCount").html("Cars Count: " + data.CountDetails.ManCount);
@@ -517,7 +518,7 @@
                             if (data.LastDetails.Vacuum1Last.VehicleImage != null) {
                                 $("#vacuum1Img")[0].src = "https://52.90.249.216" + data.LastDetails.Vacuum1Last.VehicleImage;
                             } else {
-                                $("#vacuum1Img")[0].src = "dummyCar.png"
+                                $("#vacuum1Img")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             vacuumBay1 = data.LastDetails.Vacuum1Last.id
                             $("#vacuum1Count").html("Cars Count: " + data.CountDetails.Vacuum1Count);
@@ -535,7 +536,7 @@
                             if (data.LastDetails.Vacuum2Last.VehicleImage != null) {
                                 $("#vacuum2Img")[0].src = "https://52.90.249.216" + data.LastDetails.Vacuum2Last.VehicleImage;
                             } else {
-                                $("#vacuum2Img")[0].src = "dummyCar.png"
+                                $("#vacuum2Img")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             vacuumBay2 = data.LastDetails.Vacuum2Last.id
                             $("#vacuum2Count").html("Cars Count: " + data.CountDetails.Vacuum2Count);
@@ -556,7 +557,7 @@
                             if (data.LastDetails.Lube1Last.VehicleImage != null) {
                                 $("#lube1Img")[0].src = "https://52.90.249.216" + data.LastDetails.Lube1Last.VehicleImage;
                             } else {
-                                $("#lube1Img")[0].src = "dummyCar.png"
+                                $("#lube1Img")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             lubeBay1 = data.LastDetails.Lube1Last.id
                             $("#lube1Count").html("Cars Count: " + data.CountDetails.Lube1Count);
@@ -574,7 +575,7 @@
                             if (data.LastDetails.Lube2Last.VehicleImage != null) {
                                 $("#lube2Img")[0].src = "https://52.90.249.216" + data.LastDetails.Lube2Last.VehicleImage;
                             } else {
-                                $("#lube2Img")[0].src = "dummyCar.png"
+                                $("#lube2Img")[0].src = "{% static 'assets/dummyCar.png' %}"
                             }
                             lubeBay2 = data.LastDetails.Lube2Last.id
                             $("#lube2Count").html("Cars Count: " + data.CountDetails.Lube2Count);
@@ -642,7 +643,7 @@
         updateCount();
         setInterval(function () {
             updateCount()
-        }, 5000);
+        }, 2000);
 
         updateTime();
         setInterval(function () {
