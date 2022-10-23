@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://52.90.249.216/dashboard1/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        body,
+        html {
+            font-family: 'dashboardfont';
+            scroll-behavior: smooth;
+            background: #d1d7ff;
+            letter-spacing: 0.5px;
+        }
+
+
+        @font-face {
+            font-family: 'dashboardfont';
+            src: url("/Roboto-Regular.ttf") format('truetype');
+        }
+
+        .time,
+        h2 {
+            color: #1f5aa7;
+            font-weight: 900;
+        }
+
+        .hms {
+            font-size: 5rem;
+        }
+
+        .ampm {
+            font-size: 2rem;
+        }
+
+        .date {
+            font-size: 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .desc {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0 3rem;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        .carImage {
+            padding: 0 3rem;
+        }
+
+        .cardInfo {
+            color: #7A7A84;
+            font-weight: 900;
+
+        }
+
+
+        .blinkerSuccess {
+            isolation: isolate;
+            position: relative;
+        }
+
+        .blinkerSuccess:after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #346834;
+            border-radius: 50px;
+            filter: blur(1px);
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .blinkerDanger {
+            isolation: isolate;
+            position: relative;
+        }
+
+        .blinkerDanger:after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #d00a0a;
+            border-radius: 50px;
+            filter: blur(1px);
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <title>Dashboard 3</title>
+</head>
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-around align-items-center">
+                <div class="desc"></div>
+                <div class="d-flex justify-content-center align-items-center flex-column">
+                    <img class="img-fluid carImage" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+
+    <div class="container my-5">
+        <div class="row d-flex align-items-center mb-5">
+            <div class="col-sm-12 col-md-4 text-sm-center time d-flex justify-content-around">
+                <img src="logo-en.svg" alt="" class="img-fluid">
+                <div>
+                    <span style="font-size: 16pt;">Live Station Monitoring</span><br>
+                    <span class="hms">11:13:16</span>
+                    <span class="ampm">AM</span>
+                    <br>
+                    <span class="date">Wednesday, October 19</span>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div>
+                                    <div class="card-text">Total</div>
+                                    <div id="queueTotal" class="card-title">NA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="card-text">Total Count</div>
+                                <div id="countTotal" class="card-title">NA</div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-12 col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div>
+                                    <div class="card-text">Total Car Wash</div>
+                                    <div id="washTotal" class="card-title">NA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div>
+                                    <div class="card-text">Total Vacuum</div>
+                                    <div id="vacuumTotal" class="card-title">NA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div>
+                                    <div class="card-text">Total Lube</div>
+                                    <div id="lubeTotal" class="card-title">NA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between">
+                        <div class="mb-5">
+                            <h2 class="text-center mb-4">Auto Wash</h2>
+                            <div class="card text-center">
+                                <img onclick=clickModalFn(autoWashID) id="autoWashImg" class="card-img-top img-fluid"
+                                    src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                <div class="card-body">
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center cardInfo">
+                                            <div id="autoWashID">Last vehicle ID: NA</div>
+                                            <div id="autoWashTime">Entry Time: 00:00:00</div>
+                                        </div>
+                                        <div id="autoWashCount" class="card-title">Cars Count: NA</div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="card-text autoblinker">Auto Wash</div>
+                                            <a
+                                                href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                                <button class="btn btn-outline-success">
+                                                    See all Vehicles
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-center mb-4">Manual Wash</h2>
+                            <div class="card text-center">
+                                <img onclick=clickModalFn(manWash) id="manWashImg" class="card-img-top img-fluid"
+                                    src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                <div class="card-body">
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center cardInfo">
+                                            <div id="manWashID">Last vehicle ID: NA</div>
+                                            <div id="manWashTime">Entry Time: 00:00:00</div>
+                                        </div>
+                                        <div id="manWashCount" class="card-title">Cars Count: NA</div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="card-text manblinker">Manual Wash</div>
+                                            <a
+                                                href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                                <button class="btn btn-outline-success">
+                                                    See all Vehicles
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between">
+                        <h2 class="text-center mb-4">Vacuum</h2>
+                        <div class="card text-center">
+                            <img onclick=clickModalFn(vacuumBay1) id="vacuum1Img" class="card-img-top img-fluid"
+                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="vacuumBay1ID">Last vehicle ID: NA</div>
+                                        <div id="vacuumBay1Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="vacuum1Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text vacuum1blinker">Vacuum Bay - 1</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="margin-top: 7rem;">
+                            <img onclick=clickModalFn(vacuumBay2) id="vacuum2Img" class="card-img-top img-fluid"
+                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="vacuumBay2ID">Last vehicle ID: NA</div>
+                                        <div id="vacuumBay2Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="vacuum2Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text vacuum2blinker">Vacuum Bay - 2</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between">
+                        <h2 class="text-center mb-4">Lube</h2>
+                        <div class="card text-center">
+                            <img onclick=clickModalFn(lubeBay1) id="lube1Img" class="card-img-top img-fluid"
+                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="lubeBay1ID">Last vehicle ID: NA</div>
+                                        <div id="lubeBay1Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="lube1Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text lube1Blinker">Lube Bay - 1</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="margin-top: 7rem;">
+                            <img onclick=clickModalFn(lubeBay2) id="lube2Img" class="card-img-top img-fluid"
+                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="lubeBay2ID">Last vehicle ID: NA</div>
+                                        <div id="lubeBay2Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="lube2Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text lube2Blinker">Lube Bay - 2</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte=2022-10-19&amp;created__lt=2022-10-20">
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 d-flex flex-column justify-content-between mt-5">
+                <div class="card text-center mt-3">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-text">Avg Journey Time</div>
+                            <div id="avgJourneyTime" class="card-title">NA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-text">Avg Queue Time</div>
+                            <div id="avgQueueTime" class="card-title">NA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-text">Avg Wash Time</div>
+                            <div id="avgWashTime" class="card-title">NA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-text">Avg Vacuum Time</div>
+                            <div id="avgVacuumTime" class="card-title">NA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div>
+                            <div class="card-text">Avg Lube Time</div>
+                            <div id="avgLubeTime" class="card-title">NA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./bootstrap.js"></script>
+    <script>
+        Date.prototype.addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        function updateTime() {
+            var dateInfo = new Date();
+            var hr,
+                _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+                sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+                ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+            if (dateInfo.getHours() == 0) {
+                hr = 12;
+            } else if (dateInfo.getHours() > 12) {
+                hr = dateInfo.getHours() - 12;
+            } else {
+                hr = dateInfo.getHours();
+            }
+            var currentTime = hr + ":" + _min + ":" + sec;
+            document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+            document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+            var dow = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+                month = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                day = dateInfo.getDate();
+            var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+            document.getElementsByClassName("date")[0].innerHTML = currentDate;
+        };
+        var autoWashID
+        function updateCount() {
+            $.get("https://52.90.249.216/api/visapi/", function (data, status) {
+                console.log("a " + data.LastDetails.AutoLast.Status);
+                console.log("m " + data.LastDetails.ManLast.Status);
+                console.log("v1 " + data.LastDetails.Vacuum1Last.Status);
+                console.log("v2 " + data.LastDetails.Vacuum2Last.Status);
+                console.log("l1 " + data.LastDetails.Lube1Last.Status);
+                console.log("l2 " + data.LastDetails.Lube2Last.Status);
+                if (status == "success") {
+                    {
+                        $("#countTotal").html(data.CountDetails.QueueCount);
+                        $("#queueTotal").html(data.CountDetails.QueueCount);
+                    }
+                    {
+                        $("#washTotal").html(data.CountDetails.AutoCount + data.CountDetails.ManCount);
+                        {
+                            if (data.LastDetails.AutoLast.VehicleImage != null) {
+                                $("#autoWashImg")[0].src = "https://52.90.249.216" + data.LastDetails.AutoLast.VehicleImage;
+                            } else {
+                                $("#autoWashImg")[0].src = "dummyCar.png"
+                            }
+                            autoWashID = data.LastDetails.AutoLast.id
+                            $("#autoWashCount").html("Cars Count: " + data.CountDetails.AutoCount);
+                            $("#autoWashID").html("Last vehicle ID: " + autoWashID);
+                            $("#autoWashTime").html("Entry Time: " + new Date(data.LastDetails.AutoLast.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.AutoLast.Status === 1) {
+                                $(".autoblinker").removeClass("blinkerSuccess")
+                                $(".autoblinker").addClass("blinkerDanger")
+                            } else {
+                                $(".autoblinker").removeClass("blinkerDanger")
+                                $(".autoblinker").addClass("blinkerSuccess")
+                            }
+
+                        }
+                        {
+                            if (data.LastDetails.ManLast.VehicleImage != null) {
+                                $("#manWashImg")[0].src = "https://52.90.249.216" + data.LastDetails.ManLast.VehicleImage;
+                            } else {
+                                $("#manWashImg")[0].src = "dummyCar.png"
+                            }
+                            manWash = data.LastDetails.ManLast.id
+                            $("#manWashCount").html("Cars Count: " + data.CountDetails.ManCount);
+                            $("#manWashID").html("Last vehicle ID: " + manWash);
+                            $("#manWashTime").html("Entry Time: " + new Date(data.LastDetails.ManLast.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.ManLast.Status === 1) {
+                                $(".manblinker").removeClass("blinkerSuccess")
+                                $(".manblinker").addClass("blinkerDanger")
+                            } else {
+                                $(".manblinker").removeClass("blinkerDanger")
+                                $(".manblinker").addClass("blinkerSuccess")
+                            }
+                        }
+                    }
+                    {
+                        $("#vacuumTotal").html(data.CountDetails.Vacuum1Count + data.CountDetails.Vacuum2Count);
+                        {
+                            if (data.LastDetails.Vacuum1Last.VehicleImage != null) {
+                                $("#vacuum1Img")[0].src = "https://52.90.249.216" + data.LastDetails.Vacuum1Last.VehicleImage;
+                            } else {
+                                $("#vacuum1Img")[0].src = "dummyCar.png"
+                            }
+                            vacuumBay1 = data.LastDetails.Vacuum1Last.id
+                            $("#vacuum1Count").html("Cars Count: " + data.CountDetails.Vacuum1Count);
+                            $("#vacuumBay1ID").html("Last vehicle ID: " + vacuumBay1);
+                            $("#vacuumBay1Time").html("Entry Time: " + new Date(data.LastDetails.Vacuum1Last.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.Vacuum1Last.Status === 1) {
+                                $(".vacuum1blinker").removeClass("blinkerSuccess")
+                                $(".vacuum1blinker").addClass("blinkerDanger")
+                            } else {
+                                $(".vacuum1blinker").removeClass("blinkerDanger")
+                                $(".vacuum1blinker").addClass("blinkerSuccess")
+                            }
+                        }
+                        {
+                            if (data.LastDetails.Vacuum2Last.VehicleImage != null) {
+                                $("#vacuum2Img")[0].src = "https://52.90.249.216" + data.LastDetails.Vacuum2Last.VehicleImage;
+                            } else {
+                                $("#vacuum2Img")[0].src = "dummyCar.png"
+                            }
+                            vacuumBay2 = data.LastDetails.Vacuum2Last.id
+                            $("#vacuum2Count").html("Cars Count: " + data.CountDetails.Vacuum2Count);
+                            $("#vacuumBay2ID").html("Last vehicle ID: " + vacuumBay2);
+                            $("#vacuumBay2Time").html("Entry Time: " + new Date(data.LastDetails.Vacuum2Last.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.Vacuum2Last.Status === 1) {
+                                $(".vacuum2blinker").removeClass("blinkerSuccess")
+                                $(".vacuum2blinker").addClass("blinkerDanger")
+                            } else {
+                                $(".vacuum2blinker").removeClass("blinkerDanger")
+                                $(".vacuum2blinker").addClass("blinkerSuccess")
+                            }
+                        }
+                    }
+                    {
+                        $("#lubeTotal").html(data.CountDetails.Lube1Count + data.CountDetails.Lube2Count);
+                        {
+                            if (data.LastDetails.Lube1Last.VehicleImage != null) {
+                                $("#lube1Img")[0].src = "https://52.90.249.216" + data.LastDetails.Lube1Last.VehicleImage;
+                            } else {
+                                $("#lube1Img")[0].src = "dummyCar.png"
+                            }
+                            lubeBay1 = data.LastDetails.Lube1Last.id
+                            $("#lube1Count").html("Cars Count: " + data.CountDetails.Lube1Count);
+                            $("#lubeBay1ID").html("Last vehicle ID: " + lubeBay1);
+                            $("#lubeBay1Time").html("Entry Time: " + new Date(data.LastDetails.Lube1Last.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.Lube1Last.Status === 1) {
+                                $(".lube1Blinker").removeClass("blinkerSuccess")
+                                $(".lube1Blinker").addClass("blinkerDanger")
+                            } else {
+                                $(".lube1Blinker").removeClass("blinkerDanger")
+                                $(".lube1Blinker").addClass("blinkerSuccess")
+                            }
+                        }
+                        {
+                            if (data.LastDetails.Lube2Last.VehicleImage != null) {
+                                $("#lube2Img")[0].src = "https://52.90.249.216" + data.LastDetails.Lube2Last.VehicleImage;
+                            } else {
+                                $("#lube2Img")[0].src = "dummyCar.png"
+                            }
+                            lubeBay2 = data.LastDetails.Lube2Last.id
+                            $("#lube2Count").html("Cars Count: " + data.CountDetails.Lube2Count);
+                            $("#lubeBay2ID").html("Last vehicle ID: " + lubeBay2);
+                            $("#lubeBay2Time").html("Entry Time: " + new Date(data.LastDetails.Lube2Last.EntryTime).toTimeString().split(' ')[0]);
+                            if (data.LastDetails.Lube2Last.Status === 1) {
+                                $(".lube2Blinker").removeClass("blinkerSuccess")
+                                $(".lube2Blinker").addClass("blinkerDanger")
+                            } else {
+                                $(".lube2Blinker").removeClass("blinkerDanger")
+                                $(".lube2Blinker").addClass("blinkerSuccess")
+                            }
+                        }
+                    }
+                    {
+                        $("#avgJourneyTime").html(Math.trunc(data.OverviewDetails.AvgJourney) + " Min")
+                        $("#avgQueueTime").html(Math.trunc(data.OverviewDetails.AvgQueue) + " Min")
+                        $("#avgWashTime").html(Math.trunc(data.OverviewDetails.AvgWash) + " Min")
+                        $("#avgVacuumTime").html(Math.trunc(data.OverviewDetails.AvgVacuum) + " Min")
+                        $("#avgLubeTime").html(Math.trunc(data.OverviewDetails.LubeJourneyDuration) + " Min")
+                    }
+                }
+            });
+        }
+        var autoWash,
+            manWash,
+            vacuumBay1,
+            vacuumBay2,
+            lubeBay1,
+            lubeBay2;
+        const clickModalFn = (para) => {
+            console.log(para);
+            $.get(`https://52.90.249.216/api/events/${para}`, (data, status) => {
+                console.log(data);
+                if (status == 'success') {
+                    if (data.Location === 'Washing 928-Auto') {
+                        $(".modal .modal-title").html("Automatic Washing Info")
+                    } else if (data.Location === "Washing 928-Man") {
+                        $(".modal .modal-title").html("Manual Washing Info")
+                    } else if (data.Location === "Vacuum 928-1") {
+                        $(".modal .modal-title").html("Vacuum Bay-1 Info")
+                    } else if (data.Location === "Vacuum 928-2") {
+                        $(".modal .modal-title").html("Vacuum Bay-2 Info")
+                    } else if (data.Location === "Lube 928-1") {
+                        $(".modal .modal-title").html("Lube Bay-1 Info")
+                    } else if (data.Location === "Lube 928-2") {
+                        $(".modal .modal-title").html("Lube Bay-2 Info")
+                    }
+                    $(".modal .modal-body .desc").html(
+                        "<b>Id:</b> " + data.id + "<br>" +
+                        "<b>Entry Time:</b> " + new Date(data.EntryTime).toTimeString().split(' ')[0] + "<br>" +
+                        "<b>Location:</b> " + data.Location + "<br>" +
+                        "<b>Plates Region:</b> " + data.PlatesRegion + "<br>" +
+                        "<b>Plates No:</b> " + data.PlatesNo + "<br>" +
+                        "<b>Plates Score:</b> " + data.PlatesScore + "<br>" +
+                        "<b>Vehicle Type:</b> " + data.VehicleType + "<br>" +
+                        "<b>Camera:</b> " + data.Camera + "<br>"
+                    )
+                    $(".modal .modal-body .carImage")[0].src = "https://52.90.249.216" + data.VehicleImage
+
+                }
+            })
+        }
+
+        updateCount();
+        setInterval(function () {
+            updateCount()
+        }, 5000);
+
+        updateTime();
+        setInterval(function () {
+            updateTime()
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
