@@ -215,7 +215,7 @@
                             <h2 class="text-center mb-4">Auto Wash</h2>
                             <div class="card text-center">
                                 <img onclick=clickModalFn(autoWashID) id="autoWashImg" class="card-img-top img-fluid"
-                                    src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                    src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
                                 <div class="card-body">
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between align-items-center cardInfo">
@@ -226,7 +226,7 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="card-text autoblinker">Auto Wash</div>
                                             <a
-                                                href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                                href="https://52.90.249.216/admin/logs/event/?Location=Washing+928-Auto&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
                                                 <button class="btn btn-outline-success">
                                                     See all Vehicles
                                                 </button>
@@ -240,7 +240,7 @@
                             <h2 class="text-center mb-4">Manual Wash</h2>
                             <div class="card text-center">
                                 <img onclick=clickModalFn(manWash) id="manWashImg" class="card-img-top img-fluid"
-                                    src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                    src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
                                 <div class="card-body">
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between align-items-center cardInfo">
@@ -251,7 +251,7 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="card-text manblinker">Manual Wash</div>
                                             <a
-                                                href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                                href="https://52.90.249.216/admin/logs/event/?Location=Washing+928-Man&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
                                                 <button class="btn btn-outline-success">
                                                     See all Vehicles
                                                 </button>
@@ -264,31 +264,9 @@
                     </div>
                     <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between">
                         <h2 class="text-center mb-4">Vacuum</h2>
-                        <div class="card text-center">
-                            <img onclick=clickModalFn(vacuumBay1) id="vacuum1Img" class="card-img-top img-fluid"
-                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
-                            <div class="card-body">
-                                <div class="w-100">
-                                    <div class="d-flex justify-content-between align-items-center cardInfo">
-                                        <div id="vacuumBay1ID">Last vehicle ID: NA</div>
-                                        <div id="vacuumBay1Time">Entry Time: 00:00:00</div>
-                                    </div>
-                                    <div id="vacuum1Count" class="card-title">Cars Count: NA</div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="card-text vacuum1blinker">Vacuum Bay - 1</div>
-                                        <a
-                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
-                                            <button class="btn btn-outline-success">
-                                                See all Vehicles
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card text-center" style="margin-top: 7rem;">
+						<div class="card text-center" style="margin-top: 7rem;">
                             <img onclick=clickModalFn(vacuumBay2) id="vacuum2Img" class="card-img-top img-fluid"
-                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
                             <div class="card-body">
                                 <div class="w-100">
                                     <div class="d-flex justify-content-between align-items-center cardInfo">
@@ -299,7 +277,29 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="card-text vacuum2blinker">Vacuum Bay - 2</div>
                                         <a
-                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                            href="https://52.90.249.216/admin/logs/event/?Location=Vacuum+928-2&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-center">
+                            <img onclick=clickModalFn(vacuumBay1) id="vacuum1Img" class="card-img-top img-fluid"
+                                src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="vacuumBay1ID">Last vehicle ID: NA</div>
+                                        <div id="vacuumBay1Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="vacuum1Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text vacuum1blinker">Vacuum Bay - 1</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Location=Vacuum+928-1&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
                                             <button class="btn btn-outline-success">
                                                 See all Vehicles
                                             </button>
@@ -311,31 +311,9 @@
                     </div>
                     <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between">
                         <h2 class="text-center mb-4">Lube</h2>
-                        <div class="card text-center">
-                            <img onclick=clickModalFn(lubeBay1) id="lube1Img" class="card-img-top img-fluid"
-                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
-                            <div class="card-body">
-                                <div class="w-100">
-                                    <div class="d-flex justify-content-between align-items-center cardInfo">
-                                        <div id="lubeBay1ID">Last vehicle ID: NA</div>
-                                        <div id="lubeBay1Time">Entry Time: 00:00:00</div>
-                                    </div>
-                                    <div id="lube1Count" class="card-title">Cars Count: NA</div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="card-text lube1Blinker">Lube Bay - 1</div>
-                                        <a
-                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
-                                            <button class="btn btn-outline-success">
-                                                See all Vehicles
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card text-center" style="margin-top: 7rem;">
+						<div class="card text-center" style="margin-top: 7rem;">
                             <img onclick=clickModalFn(lubeBay2) id="lube2Img" class="card-img-top img-fluid"
-                                src="dummyCar.png" alt="" data-toggle="modal" data-target="#infoModal">
+                                src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
                             <div class="card-body">
                                 <div class="w-100">
                                     <div class="d-flex justify-content-between align-items-center cardInfo">
@@ -346,7 +324,7 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="card-text lube2Blinker">Lube Bay - 2</div>
                                         <a
-                                            href="https://52.90.249.216/admin/logs/event/?Camera=ADNOC+928+Queue&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                            href="https://52.90.249.216/admin/logs/event/?Location=Lube+928-2&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
                                             <button class="btn btn-outline-success">
                                                 See all Vehicles
                                             </button>
@@ -355,6 +333,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card text-center">
+                            <img onclick=clickModalFn(lubeBay1) id="lube1Img" class="card-img-top img-fluid"
+                                src="{% static 'assets/dummyCar.png' %}" alt="" data-toggle="modal" data-target="#infoModal">
+                            <div class="card-body">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center cardInfo">
+                                        <div id="lubeBay1ID">Last vehicle ID: NA</div>
+                                        <div id="lubeBay1Time">Entry Time: 00:00:00</div>
+                                    </div>
+                                    <div id="lube1Count" class="card-title">Cars Count: NA</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="card-text lube1Blinker">Lube Bay - 1</div>
+                                        <a
+                                            href="https://52.90.249.216/admin/logs/event/?Location=Lube+928-1&amp;created__gte="+new Date().toISOString().split('T')[0]+"&created__lt="+new Date().addDays(1).toISOString().split('T')[0]>
+                                            <button class="btn btn-outline-success">
+                                                See all Vehicles
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
